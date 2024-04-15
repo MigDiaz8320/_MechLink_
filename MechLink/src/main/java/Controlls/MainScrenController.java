@@ -34,6 +34,8 @@ public  void loginHandler(){
     controller.showLoginView();
 
 }
+
+
     public MainScrenController(Button signUpBtn, Button loginBtn) {
         this.signUpBtn = signUpBtn;
         this.loginBtn = loginBtn;

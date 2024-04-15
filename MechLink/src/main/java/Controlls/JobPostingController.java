@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class JobPostingController {
     private ClientDashboardController clientDashboardController;
@@ -31,14 +32,27 @@ public class JobPostingController {
     @FXML
     public Button okBtn;
 
+
     @FXML
     public void submitBtnClicked() {
         if (userFilledForm()) {
             Job newUserJob = new Job();
-            newUserJob.setDatePosted(datePicked.getValue());
+            String firstName = firstNameField.getText();
+            String lastName = lastNameField.getText();
+            String carModel = carModelField.getText();
+            LocalDate datePosted = datePicked.getValue();
             newUserJob.setLocation(locationField.getText());
             newUserJob.setJobDescription(jobDescriptionField.getText());
-            clientDashboardController.addNewJobUI();
+            String fullName = firstName + " "+lastName;
+
+
+            System.out.println("First Name: "+firstName);
+            System.out.println("Last Name: "+lastName);
+            System.out.println("Date Posted: "+datePosted);
+            System.out.println("Location: "+newUserJob.getLocation());
+            System.out.println("Job Description: "+newUserJob.getJobDescription());
+            System.out.println();
+            clientDashboardController.addNewJob(fullName, datePosted, newUserJob.getLocation(), carModel, newUserJob.getJobDescription());
             Stage stage = (Stage) submitBtn.getScene().getWindow();
             stage.close();
             System.out.println("FILLED");
@@ -74,5 +88,15 @@ public class JobPostingController {
     public void okBtnClicked() {
         Stage stage = (Stage) okBtn.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    public void cancelBtnClicked() {
+        Stage stage = (Stage) cancelBtn.getScene().getWindow();
+        stage.close();
+    }
+
+    public void setClientDashboardController(ClientDashboardController clientDashboardController) {
+        this.clientDashboardController = clientDashboardController;
     }
 }

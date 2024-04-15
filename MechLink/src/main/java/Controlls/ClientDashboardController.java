@@ -7,11 +7,16 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ClientDashboardController implements Initializable {
@@ -34,6 +39,8 @@ public class ClientDashboardController implements Initializable {
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setTitle("Job Posting Form");
+            JobPostingController jobPostingController = loader.getController();
+            jobPostingController.setClientDashboardController(this);
             Scene scene = new Scene(root, 278, 495);
             stage.setScene(scene);
             stage.show();
@@ -41,9 +48,17 @@ public class ClientDashboardController implements Initializable {
             e.printStackTrace();
         }
     }
+    public void addNewJob(String firstName, LocalDate datePosted, String location, String carModel, String jobDescription) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main/job-filled.fxml"));
+            AnchorPane jobEntry = loader.load();
 
-    public void addNewJobUI() {
-
+            JobFilledController controller = loader.getController();
+            controller.setNewJobData(firstName, datePosted.toString(), location, carModel, jobDescription);
+            jobPostedVBox.getChildren().add(jobEntry);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void mouseHoverBtn() {

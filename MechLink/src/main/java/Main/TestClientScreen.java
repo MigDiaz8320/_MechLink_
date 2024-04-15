@@ -13,8 +13,8 @@ public class TestClientScreen extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(TestClientScreen.class.getResource("/Main/client-dashboard.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 605, 665);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load(), 665, 665);
+        stage.setTitle("");
         stage.setScene(scene);
         stage.show();
     }

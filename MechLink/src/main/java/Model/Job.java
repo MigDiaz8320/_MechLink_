@@ -11,6 +11,7 @@ public class Job {
     private String jobDescription;
     private boolean completed;
     private boolean accepted;
+    private LocalDate postedDate;
 
     public Car getCar() {
         return car;
@@ -68,6 +69,11 @@ public class Job {
         this.accepted = accepted;
     }
 
-    public void setDatePosted(LocalDate value) {
+    public LocalDate getPostedDate() {
+        return postedDate;
+    }
+
+    public void setDatePosted(LocalDate postedDate) {
+        this.postedDate = postedDate;
     }
 }
