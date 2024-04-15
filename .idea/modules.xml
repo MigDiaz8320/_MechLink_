@@ -6,6 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MechLink.main.iml" filepath="$PROJECT_DIR$/.idea/modules/MechLink.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MechLink.test.iml" filepath="$PROJECT_DIR$/.idea/modules/MechLink.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/_MechLink_.iml" filepath="$PROJECT_DIR$/.idea/_MechLink_.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.ahmed.MechLink.iml" filepath="$PROJECT_DIR$/.idea/modules/com.ahmed.MechLink.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.ahmed.MechLink.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.ahmed.MechLink.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.ahmed.MechLink.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.ahmed.MechLink.test.iml" />
     </modules>
   </component>
 </project>

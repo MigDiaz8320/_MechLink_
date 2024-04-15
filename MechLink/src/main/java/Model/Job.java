@@ -1,5 +1,6 @@
 package Model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Job {
@@ -65,5 +66,8 @@ public class Job {
 
     public void setAccepted(boolean accepted) {
         this.accepted = accepted;
+    }
+
+    public void setDatePosted(LocalDate value) {
     }
 }

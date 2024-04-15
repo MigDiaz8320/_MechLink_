@@ -42,6 +42,10 @@ public class ClientDashboardController implements Initializable {
         }
     }
 
+    public void addNewJobUI() {
+
+    }
+
     private void mouseHoverBtn() {
         postJobBtn.setCursor(Cursor.HAND);
     }
