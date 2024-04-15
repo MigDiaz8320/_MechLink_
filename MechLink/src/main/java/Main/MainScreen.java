@@ -17,6 +17,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class MainScreen extends Application {
     private MainScrenController controller ;
@@ -31,9 +35,25 @@ public class MainScreen extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        // Set the controller instance
+    public static void createNewDatabase(String fileName) {
 
+        String url = "jdbc:sqlite:" + fileName;
+
+        try (Connection conn = DriverManager.getConnection(url)) {
+            if (conn != null) {
+                DatabaseMetaData meta = conn.getMetaData();
+                //System.out.println("The driver name is " + meta.getDriverName());
+                System.out.println("A new database has been created.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        createNewDatabase("MechLink.db");
+        // Set the controller instance
         launch(args);
     }
 
