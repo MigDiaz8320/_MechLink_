@@ -1,6 +1,6 @@
 package Controlls;
 
-import Main.LoginView;
+import View.LoginView;
 
 public class LoginViewController {
     public void showLoginView(){

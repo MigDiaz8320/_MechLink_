@@ -1,15 +1,11 @@
-package Main;
+package View;
 
 import Controlls.MainScrenController;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -102,14 +98,11 @@ public class MainScreen extends Application {
         Button loginBtn = new Button("Log in");
         controller = new MainScrenController(signUpBtn, loginBtn);
         signUpBtn.setOnAction(event -> {
-            if (controller != null) {
-                controller.signUpBtnHandler();
-            } else {
-                System.out.println("Controller is null!");
-            }
+            controller.signUpBtnHandler();
         });
 
         loginBtn.setOnAction(event -> {
+
          controller.loginHandler();
         });
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane style="-fx-background-color: #1E0561;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlls.MechanicController">
+    <children>
+        <Label alignment="CENTER" layoutX="232.0" layoutY="14.0" style="-fx-background-color: #0096FF;" text="Mechanic" textAlignment="CENTER">
+            <font>
+                <Font size="32.0" />
+            </font>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <effect>
+                <Glow level="0.6" />
+            </effect>
+        </Label>
+        <Button layoutX="534.0" layoutY="14.0" mnemonicParsing="false" onAction="#onLogoutButtonClick" text="Log out" />
+        <VBox layoutX="14.0" layoutY="100.0" prefHeight="200.0" prefWidth="100.0" style="-fx-spacing: 30;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="477.6" AnchorPane.topAnchor="100.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#onBrowseButtonClick" text="Browse jobs" VBox.vgrow="ALWAYS" />
+                <Button mnemonicParsing="false" onAction="#onAcceptedJobsButtonClick" text="Accepted jobs" VBox.vgrow="ALWAYS" />
+            </children>
+        </VBox>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+<!--            <image>-->
+<!--                <Image url="@images/Mechanic.png" />-->
+<!--            </image>-->
+        </ImageView>
+    </children>
+</AnchorPane>
