@@ -3,7 +3,7 @@ module com.ahmed.mechlink {
     requires javafx.fxml;
 
 
-    opens Main to javafx.fxml;
+    opens View to javafx.fxml;
     opens Controlls to javafx.fxml;
-    exports Main;
+    exports View;
 }

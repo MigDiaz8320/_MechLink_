@@ -1,7 +1,6 @@
 package Controlls;
-import Main.TestClientScreen;
+import View.TestClientScreen;
 import Model.Job;
-import Model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -59,7 +58,7 @@ public class JobPostingController {
 
     private void formNotFilledAlert() {
         try {
-            FXMLLoader loader = new FXMLLoader(TestClientScreen.class.getResource("/Main/job-form-not-filled-alert.fxml"));
+            FXMLLoader loader = new FXMLLoader(TestClientScreen.class.getResource("/View/job-form-not-filled-alert.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             Scene scene = new Scene(root);
