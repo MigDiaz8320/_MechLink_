@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MechLink.iml" filepath="$PROJECT_DIR$/.idea/modules/MechLink.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MechLink.main.iml" filepath="$PROJECT_DIR$/.idea/modules/MechLink.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MechLink.test.iml" filepath="$PROJECT_DIR$/.idea/modules/MechLink.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/_MechLink_.iml" filepath="$PROJECT_DIR$/.idea/_MechLink_.iml" />
     </modules>
   </component>
