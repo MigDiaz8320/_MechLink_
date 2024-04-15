@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<AnchorPane prefHeight="107.0" prefWidth="174.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlls.JobPostingController">
+    <VBox alignment="CENTER" spacing="10.0" prefWidth="174.0" prefHeight="107.0" style="-fx-background-color: #f4f4f4; -fx-padding: 10;">
+        <Label text="Error: Fill In All Fields" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+        <Button fx:id="okBtn" text="OK" maxWidth="50" onAction="#okBtnClicked" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+    </VBox>
+
+</AnchorPane>
