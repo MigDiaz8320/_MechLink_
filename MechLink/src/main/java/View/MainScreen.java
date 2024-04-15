@@ -1,15 +1,11 @@
-package Main;
+package View;
 
 import Controlls.MainScrenController;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,6 +13,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class MainScreen extends Application {
     private MainScrenController controller ;
@@ -31,9 +31,25 @@ public class MainScreen extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        // Set the controller instance
+    public static void createNewDatabase(String fileName) {
 
+        String url = "jdbc:sqlite:" + fileName;
+
+        try (Connection conn = DriverManager.getConnection(url)) {
+            if (conn != null) {
+                DatabaseMetaData meta = conn.getMetaData();
+                //System.out.println("The driver name is " + meta.getDriverName());
+                System.out.println("A new database has been created.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        createNewDatabase("MechLink.db");
+        // Set the controller instance
         launch(args);
     }
 
@@ -82,14 +98,11 @@ public class MainScreen extends Application {
         Button loginBtn = new Button("Log in");
         controller = new MainScrenController(signUpBtn, loginBtn);
         signUpBtn.setOnAction(event -> {
-            if (controller != null) {
-                controller.signUpBtnHandler();
-            } else {
-                System.out.println("Controller is null!");
-            }
+            controller.signUpBtnHandler();
         });
 
         loginBtn.setOnAction(event -> {
+
          controller.loginHandler();
         });
 

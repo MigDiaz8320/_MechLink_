@@ -1,5 +1,5 @@
 package Controlls;
-import Main.TestClientScreen;
+import View.TestClientScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -35,7 +35,7 @@ public class ClientDashboardController implements Initializable {
     @FXML
     public void postJobButtonClicked() {
         try {
-            FXMLLoader loader = new FXMLLoader(TestClientScreen.class.getResource("/Main/job-posting-form.fxml"));
+            FXMLLoader loader = new FXMLLoader(TestClientScreen.class.getResource("/View/job-posting-form.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setTitle("Job Posting Form");
