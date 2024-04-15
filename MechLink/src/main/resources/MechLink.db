@@ -1,0 +1,97 @@
+DROP SCHEMA MechLink;
+CREATE SCHEMA IF NOT EXISTS MechLink;
+USE MechLink;
+
+-- -----------------------------------------------------
+-- Table `MechLink`.`Client`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MechLink`.`Client` (
+  `Client_ID` INT NOT NULL,
+  `First_Name` VARCHAR(45) NULL,
+  `Last_Name` VARCHAR(45) NULL,
+  `Zipcode` INT NULL,
+  `Email_Address` VARCHAR(45) NULL,
+  PRIMARY KEY (`Client_ID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `MechLink`.`Car`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MechLink`.`Car` (
+  `Car_ID` INT NOT NULL,
+  `Make` VARCHAR(45) NULL,
+  `Model` VARCHAR(45) NULL,
+  `Year` VARCHAR(45) NULL,
+  `Client_ID` INT NULL,
+  PRIMARY KEY (`Car_ID`),
+  INDEX `Client_ID_idx` (`Client_ID` ASC) VISIBLE,
+  CONSTRAINT `Client_ID`
+    FOREIGN KEY (`Client_ID`)
+    REFERENCES `MechLink`.`Client` (`Client_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `MechLink`.`Mechanic`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MechLink`.`Mechanic` (
+  `Mechanic_ID` INT NOT NULL,
+  `First_Name` VARCHAR(45) NULL,
+  `Last_Name` VARCHAR(45) NULL,
+  `Zipcode` INT NULL,
+  `Email_Address` VARCHAR(45) NULL,
+  PRIMARY KEY (`Mechanic_ID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `MechLink`.`Job`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `MechLink`.`Job` (
+  `Job_ID` INT NOT NULL,
+  `Car_ID` INT NULL,
+  `Mechanic_ID` INT NULL,
+  `Accepted` TINYINT NULL,
+  `Completed` TINYINT NULL,
+  `Street Address` VARCHAR(45) NULL,
+  `Zipcode` INT NULL,
+  `Date_Posted` DATE NULL,
+  PRIMARY KEY (`Job_ID`),
+  UNIQUE INDEX `Job_ID_UNIQUE` (`Job_ID` ASC) VISIBLE,
+  INDEX `Car_ID_idx` (`Car_ID` ASC) VISIBLE,
+  INDEX `Mech_ID_idx` (`Mechanic_ID` ASC) VISIBLE,
+  CONSTRAINT `Car_ID`
+    FOREIGN KEY (`Car_ID`)
+    REFERENCES `MechLink`.`Car` (`Car_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Mech_ID`
+    FOREIGN KEY (`Mechanic_ID`)
+    REFERENCES `MechLink`.`Mechanic` (`Mechanic_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+INSERT INTO Client VALUE
+(78733,"Bob", "Smith", 66238, "Bob.Smith78@hotmail.com"),
+(46683,"Leslie", "Albertson", 90872, "hfofhush@yahoo.com");
+
+INSERT INTO mechanic VALUE
+(94379,"Henry", "Jones", 85404, "H.Jones1990@gmail.com"),
+(93743,"Bubba", "Doe", 93793, "Bubba.Doe2821@yahoo.com");
+
+INSERT INTO Car VALUE
+(34873, "Toyota", "Camry", 2009, 46683),
+(34875, "Toyota", "4Runner", 2012, 78733);
+
+INSERT INTO job VALUE
+(872347, 34873, 93743, 1, 0, "3784 Dale Street", 27873, "2024-02-03"),
+(749863, 34875, NULL, 0, 0, "74368 Main Street", 35334, "2023-12-26");
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

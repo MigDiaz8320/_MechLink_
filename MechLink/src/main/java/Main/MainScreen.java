@@ -2,25 +2,24 @@ package Main;
 
 import Controlls.MainScrenController;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.net.URL;
 
 public class MainScreen extends Application {
     private MainScrenController controller ;
-
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setMaximized(true);
@@ -31,9 +30,25 @@ public class MainScreen extends Application {
         primaryStage.show();
     }
 
+    public static void createNewDatabase(String fileName) {
+
+        String url = "jdbc:sqlite:" + fileName;
+
+        try (Connection conn = DriverManager.getConnection(url)) {
+            if (conn != null) {
+                DatabaseMetaData meta = conn.getMetaData();
+                //System.out.println("The driver name is " + meta.getDriverName());
+                System.out.println("A new database has been created.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static void main(String[] args) {
         // Set the controller instance
-
+        createNewDatabase("MechLink.db");
         launch(args);
     }
 
