@@ -50,7 +50,7 @@ public class ClientDashboardController implements Initializable {
     }
     public void addNewJob(String firstName, LocalDate datePosted, String location, String carModel, String jobDescription) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main/job-filled.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/job-filled.fxml"));
             AnchorPane jobEntry = loader.load();
 
             JobFilledController controller = loader.getController();
