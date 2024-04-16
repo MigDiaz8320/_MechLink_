@@ -48,13 +48,13 @@ public class ClientDashboardController implements Initializable {
             e.printStackTrace();
         }
     }
-    public void addNewJob(String firstName, LocalDate datePosted, String location, String carModel, String jobDescription) {
+    public void addNewJob(String fullName, LocalDate datePosted, String location, String carModel, String jobDescription) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/job-filled.fxml"));
             AnchorPane jobEntry = loader.load();
 
             JobFilledController controller = loader.getController();
-            controller.setNewJobData(firstName, datePosted.toString(), location, carModel, jobDescription);
+            controller.setNewJobData(fullName, datePosted.toString(), location, carModel, jobDescription);
             jobPostedVBox.getChildren().add(jobEntry);
         } catch (IOException e) {
             e.printStackTrace();
