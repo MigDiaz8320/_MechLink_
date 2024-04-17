@@ -11,6 +11,18 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 
+
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+import java.net.URL;
+
 public class SignUpView {
     private static SignUpView instance;
 
@@ -19,7 +31,7 @@ public class SignUpView {
 
     private TextField emailTextField;
     private PasswordField passwordField;
-//    private PasswordField passwordField;
+    //    private PasswordField passwordField;
     private Button loginButton;
 
     private SignUpView() {
