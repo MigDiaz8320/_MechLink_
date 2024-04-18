@@ -16,30 +16,29 @@ public class SignUpView {
 
     private final Stage stage;
     private final Scene scene;
-    private TextField firstName, lastName,address, phoneNumber, zipCode;
+    private TextField firstName, lastName, address, phoneNumber, zipCode;
     private TextField emailTextField;
     private PasswordField passwordField;
-    //    private PasswordField passwordField;
     private Button loginButton;
 
     private SignUpView() {
         // Create layout and add components
         GridPane gridPane = new GridPane();
-        gridPane.getStyleClass().addAll("login");
+        gridPane.getStyleClass().add("signUpView");
+
         // Create UI components
-        //fits  & last name starts
-        Label firstNLable = new Label("First name");
+        // First & last name labels and text fields
+        Label firstLabel = new Label("First name");
         firstName = new TextField();
-        gridPane.add(firstNLable, 0,0);
-        gridPane.add(firstName, 1,1);
+        gridPane.add(firstLabel, 0, 0);
+        gridPane.add(firstName, 1, 0);
 
-        Label lastNameLable  = new Label("Last Name ");
+        Label lastLabel = new Label("Last Name ");
         lastName = new TextField();
-        gridPane.add(lastNameLable, 0,1);
-        gridPane.add(firstNLable, 1,1);
-//first & last name ends
+        gridPane.add(lastLabel, 0, 1);
+        gridPane.add(lastName, 1, 1);
 
-
+        // Email, password, and login components
         Label emailLabel = new Label("Email:");
         emailTextField = new TextField();
 
@@ -47,19 +46,17 @@ public class SignUpView {
         passwordField = new PasswordField();
 
         loginButton = new Button("Login");
-
-
         loginButton.getStyleClass().add("loginBtn");
 
-        gridPane.setVgap(30);
-        gridPane.setPadding(new Insets(20));
-
+        gridPane.setVgap(10);
         gridPane.setHgap(10);
-        gridPane.add(emailLabel, 0, 0);
-        gridPane.add(emailTextField, 1, 0);
-        gridPane.add(passwordLabel, 0, 1);
-        gridPane.add(passwordField, 1, 1);
-        gridPane.add(loginButton, 1, 2);
+
+        // Add email, password, and login components to the grid pane
+        gridPane.add(emailLabel, 0, 2);
+        gridPane.add(emailTextField, 1, 2);
+        gridPane.add(passwordLabel, 0, 3);
+        gridPane.add(passwordField, 1, 3);
+        gridPane.add(loginButton, 1, 4);
 
         // Create scene
         scene = new Scene(gridPane, 500, 700);
@@ -69,7 +66,7 @@ public class SignUpView {
         stage = new Stage();
         stage.setMaximized(true);
         stage.setScene(scene);
-        stage.setTitle("Login");
+        stage.setTitle("Create an acount ");
     }
 
     public static SignUpView getInstance() {

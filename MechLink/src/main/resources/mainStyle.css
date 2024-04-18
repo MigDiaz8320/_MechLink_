@@ -52,6 +52,9 @@
    -fx-pref-width: 200px;
    -fx-width: 200px;
 }
+.signUpView {
+-fx-background-color:#449EEC;
+}
 /**
 
 Colors:

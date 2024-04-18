@@ -68,9 +68,9 @@ public class LoginView {
         return stage;
     }
 
-    public Scene getScene() {
-        return scene;
-    }
+//    public Scene getScene() {
+//        return scene;
+//    }
 
     public TextField getEmailTextField() {
         return emailTextField;

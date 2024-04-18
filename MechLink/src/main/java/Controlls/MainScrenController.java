@@ -5,12 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class MainScrenController {
-    //SignUpController
-        //ask the controller to show the view
-    //singin controller
-        //ask the controller to show the view
-//    SingUpController singUpController ;
-//    SignUpView signUpView;
+
     @FXML
     private Button signUpBtn;
 

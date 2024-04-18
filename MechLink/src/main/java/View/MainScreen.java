@@ -98,7 +98,8 @@ public class MainScreen extends Application {
         Button loginBtn = new Button("Log in");
         controller = new MainScrenController(signUpBtn, loginBtn);
         signUpBtn.setOnAction(event -> {
-            controller.signUpBtnHandler();
+            System.out.println("sign up btn pressed");
+           controller.signUpBtnHandler();
         });
 
         loginBtn.setOnAction(event -> {
