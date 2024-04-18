@@ -59,6 +59,15 @@
 .title {
 -fx-font-size: 27px;
 }
+.labels {
+
+-fx-font-weight: bold;
+-fx-font-size: 19px;
+
+}
+.text {
+-fx-text-alignment: center;
+}
 /**
 
 Colors:
