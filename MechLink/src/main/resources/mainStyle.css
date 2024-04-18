@@ -54,6 +54,10 @@
 }
 .signUpView {
 -fx-background-color:#449EEC;
+   -fx-padding: 10 null null 20;
+}
+.title {
+-fx-font-size: 27px;
 }
 /**
 

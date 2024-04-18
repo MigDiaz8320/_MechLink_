@@ -25,7 +25,7 @@ public class SignUpView {
         // Create layout and add components
         GridPane gridPane = new GridPane();
         gridPane.getStyleClass().add("signUpView");
-
+        gridPane.setPadding(new Insets(10, 9, 0, 20));
         // Create UI components
         // First & last name labels and text fields
         Label firstLabel = new Label("First name");
@@ -37,7 +37,11 @@ public class SignUpView {
         lastName = new TextField();
         gridPane.add(lastLabel, 0, 1);
         gridPane.add(lastName, 1, 1);
+        Label contact = new Label("Contact");
+        contact.setUnderline(true);
+        contact.getStyleClass().add("title");
 
+        gridPane.add(contact, 0, 2);
         // Email, password, and login components
         Label emailLabel = new Label("Email:");
         emailTextField = new TextField();
@@ -52,11 +56,11 @@ public class SignUpView {
         gridPane.setHgap(10);
 
         // Add email, password, and login components to the grid pane
-        gridPane.add(emailLabel, 0, 2);
-        gridPane.add(emailTextField, 1, 2);
-        gridPane.add(passwordLabel, 0, 3);
-        gridPane.add(passwordField, 1, 3);
-        gridPane.add(loginButton, 1, 4);
+        gridPane.add(emailLabel, 0, 3);
+        gridPane.add(emailTextField, 1, 3);
+        gridPane.add(passwordLabel, 0, 4);
+        gridPane.add(passwordField, 1, 4);
+        gridPane.add(loginButton, 1, 6);
 
         // Create scene
         scene = new Scene(gridPane, 500, 700);
