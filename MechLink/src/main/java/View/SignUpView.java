@@ -8,6 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.scene.control.ToggleGroup;
 
 import javafx.scene.control.RadioButton;
 import java.net.URL;
@@ -76,9 +77,11 @@ secondTitle.getStyleClass().add("title");
         //ad nodes to the grid
         gridPane.add(firstLabel, 0,0);
         gridPane.add(firstName, 1,0);
-
+        ToggleGroup toggleGroup = new ToggleGroup();
 RadioButton rb1 = new RadioButton("Mechanic ");
         RadioButton rb2 = new RadioButton("Client ");
+        rb1.setToggleGroup(toggleGroup);
+        rb2.setToggleGroup(toggleGroup);
         gridPane.add(lastLabel, 0,1);
         gridPane.add(lastName, 1, 1);
 
@@ -96,8 +99,8 @@ RadioButton rb1 = new RadioButton("Mechanic ");
         gridPane.add(passwordField, 4, 6);
         gridPane.add(addressLabel, 1, 7);
         gridPane.add(address, 2, 7);
-        gridPane.add(zipCodeLabel, 1, 8);
-        gridPane.add(zipCode, 2, 8);
+        gridPane.add(zipCodeLabel, 3, 7);
+        gridPane.add(zipCode, 4, 7);
         gridPane.add(secondTitle, 0, 10);
         gridPane.add(rb1, 1, 11);
         gridPane.add(rb2, 1, 12);
