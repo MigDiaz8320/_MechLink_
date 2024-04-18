@@ -16,14 +16,30 @@ public class SignUpView {
 
     private final Stage stage;
     private final Scene scene;
-
+    private TextField firstName, lastName,address, phoneNumber, zipCode;
     private TextField emailTextField;
     private PasswordField passwordField;
-//    private PasswordField passwordField;
+    //    private PasswordField passwordField;
     private Button loginButton;
 
     private SignUpView() {
+        // Create layout and add components
+        GridPane gridPane = new GridPane();
+        gridPane.getStyleClass().addAll("login");
         // Create UI components
+        //fits  & last name starts
+        Label firstNLable = new Label("First name");
+        firstName = new TextField();
+        gridPane.add(firstNLable, 0,0);
+        gridPane.add(firstName, 1,1);
+
+        Label lastNameLable  = new Label("Last Name ");
+        lastName = new TextField();
+        gridPane.add(lastNameLable, 0,1);
+        gridPane.add(firstNLable, 1,1);
+//first & last name ends
+
+
         Label emailLabel = new Label("Email:");
         emailTextField = new TextField();
 
@@ -32,9 +48,7 @@ public class SignUpView {
 
         loginButton = new Button("Login");
 
-        // Create layout and add components
-        GridPane gridPane = new GridPane();
-        gridPane.getStyleClass().addAll("login");
+
         loginButton.getStyleClass().add("loginBtn");
 
         gridPane.setVgap(30);
@@ -79,6 +93,26 @@ public class SignUpView {
 
     public PasswordField getPasswordField() {
         return passwordField;
+    }
+
+    public TextField getFirstName() {
+        return firstName;
+    }
+
+    public TextField getLastName() {
+        return lastName;
+    }
+
+    public TextField getAddress() {
+        return address;
+    }
+
+    public TextField getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public TextField getZipCode() {
+        return zipCode;
     }
 
     public Button getLoginButton() {
