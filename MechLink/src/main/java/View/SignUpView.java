@@ -106,7 +106,11 @@ public class SignUpView {
         // Create scene
         scene = new Scene(gridPane, 500, 700);
         loadStylesheetIntoScene(scene);
+//add event to the createBTN
+        createBTN.setOnAction(event -> {
+            System.out.println("create BTN prssed");
 
+        });
         // Create stage
         stage = new Stage();
         stage.setMaximized(true);
