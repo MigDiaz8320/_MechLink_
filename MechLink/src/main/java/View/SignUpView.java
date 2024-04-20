@@ -1,5 +1,6 @@
 package View;
 
+import Controlls.SingUpController;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,7 +16,7 @@ import java.net.URL;
 
 public class SignUpView {
     private static SignUpView instance;
-
+private String selectedUser ;
     private final Stage stage;
     private final Scene scene;
     private final TextField firstName, lastName, address, phoneNumber, zipCode, userName;
@@ -73,10 +74,11 @@ public class SignUpView {
 
         // ToggleGroup for radio buttons
         ToggleGroup toggleGroup = new ToggleGroup();
-        RadioButton rb1 = new RadioButton("Mechanic");
-        RadioButton rb2 = new RadioButton("Client");
-        rb1.setToggleGroup(toggleGroup);
-        rb2.setToggleGroup(toggleGroup);
+        RadioButton mechanicRadioBtn = new RadioButton("Mechanic");
+        RadioButton clientRadioBtn = new RadioButton("Client");
+
+       mechanicRadioBtn.setToggleGroup(toggleGroup);
+        clientRadioBtn.setToggleGroup(toggleGroup);
 
         // Add nodes to the grid
         gridPane.add(firstLabel, 0, 0);
@@ -99,8 +101,8 @@ public class SignUpView {
         gridPane.add(zipCodeLabel, 3, 8);
         gridPane.add(zipCode, 4, 8);
         gridPane.add(secondTitle, 0, 10);
-        gridPane.add(rb1, 1, 11);
-        gridPane.add(rb2, 1, 12);
+        gridPane.add(mechanicRadioBtn, 1, 11);
+        gridPane.add(clientRadioBtn, 1, 12);
         gridPane.add(createBTN, 4, 16);
 
         // Create scene
@@ -108,8 +110,8 @@ public class SignUpView {
         loadStylesheetIntoScene(scene);
 //add event to the createBTN
         createBTN.setOnAction(event -> {
-            System.out.println("create BTN prssed");
-
+            SingUpController controller = new SingUpController();
+//            controller.createUser();
         });
         // Create stage
         stage = new Stage();
@@ -172,6 +174,10 @@ public class SignUpView {
     public Button getCreateBTN() {
         return createBTN;
     }
+public String getSelectedUser(){
+        return selectedUser;
+}
+
 
     private void loadStylesheetIntoScene(Scene scene) {
         URL stylesheetURL = getClass().getResource("/mainStyle.css");
