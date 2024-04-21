@@ -30,10 +30,10 @@
                 <Button mnemonicParsing="false" onAction="#onAcceptedJobsButtonClick" text="Accepted jobs" VBox.vgrow="ALWAYS" />
             </children>
         </VBox>
-        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
-<!--            <image>-->
-<!--                <Image url="@images/Mechanic.png" />-->
-<!--            </image>-->
-        </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="196.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Mechanic.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
