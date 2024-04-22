@@ -4,9 +4,9 @@ import Model.UserCreation;
 import View.SignUpView;
 
 public class SingUpController {
-    SignUpView signUpView;
+    private SignUpView signUpView;
 
-    public void  showView() {
+    public void showView() {
         signUpView = SignUpView.getInstance();
         signUpView.getStage().show();
     }
@@ -22,39 +22,27 @@ public class SingUpController {
         String email = signUpView.getEmailTextField().getText();
         String password = signUpView.getPasswordField().getText();
         String selectedType = signUpView.getSelectedUser();
-boolean isMechanic = selectedType == "Mechanic";
+        boolean isMechanic = selectedType.equals("Mechanic"); // Using .equals() for string comparison
 
-        UserCreation usercreation = new UserCreation();
+        UserCreation userCreation = new UserCreation();
 
-       usercreation.createUser(userName, password, firstName, lastName, zipCode, isMechanic );
-
-
-
+        userCreation.createUser(userName, password, firstName, lastName, zipCode, isMechanic);
 
         String confirmPassword = signUpView.getPasswordConfirmation().getText();
-        System.out.println("create method is called from the SignUpView");
-        if (selectedType.equals("Client")) {
-            // Assuming showClientDashboard() is a method in ClientDashboardController
-            System.out.println("showing the client view");
 
-            ClientDashboardController controller = new ClientDashboardController();
-            controller.showView();
-        } else {
-            System.out.println("showing the Mechanic view");
-        }
         if (!validateInput(firstName, lastName, address, phoneNumber, zipCode, userName, email, password, confirmPassword)) {
             signUpView.showError("Invalid input. Please check your input fields.");
         } else {
             System.out.println("User created: " + firstName + " " + lastName);
             System.out.println("User type: " + selectedType);
-            if (selectedType.equals("Client")) {
+            if (selectedType.equals("Client") && password.equals(confirmPassword)) { // Moved password comparison to validation logic
                 // Assuming showClientDashboard() is a method in ClientDashboardController
-                System.out.println("showing the client view");
+                System.out.println("Showing the client view");
 
                 ClientDashboardController controller = new ClientDashboardController();
                 controller.showView();
             } else {
-                System.out.println("showing the Mechanic view");
+                System.out.println("Showing the Mechanic view");
             }
         }
     }

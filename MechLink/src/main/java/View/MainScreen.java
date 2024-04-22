@@ -119,14 +119,5 @@ public class MainScreen extends Application {
         return box;
     }
 
-//
-//    @Override
-//    public void start(Stage stage) throws Exception {
-//        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-//    Scene sn = new Scene(root,700, 670);
-//stage.setScene(sn );
-//stage.setTitle("Welcome To MechLink!");
-//stage.show();
-//    }
 
 }
