@@ -1,5 +1,6 @@
 package Controlls;
 
+import View.TestClientScreen;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -55,5 +56,17 @@ public class MechanicBrowseController implements Initializable {
             }
         });
 
+    }
+
+    public void showView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(TestClientScreen.class.getResource("/View/mechanic-browse.fxml"));
+            Scene scene = new Scene(loader.load(), 665, 665);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
