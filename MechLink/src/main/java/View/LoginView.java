@@ -114,9 +114,6 @@ public class LoginView {
             }
 
 
-            /**
-             * select all rows in the warehouses table
-             */
             public void loginCheck(String email_address, String password){
                 //Query to retrieve login info
                 String sql = "SELECT password FROM Logins WHERE email_address = ?";

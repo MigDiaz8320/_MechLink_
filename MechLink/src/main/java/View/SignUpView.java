@@ -1,6 +1,7 @@
 package View;
 
 import Controlls.SingUpController;
+import Model.UserCreation;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -8,6 +9,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.*;
 
 public class SignUpView {
     private static SignUpView instance;
@@ -106,6 +108,11 @@ private String selectedUser ;
 //add event to the createBTN
         createBTN.setOnAction(event -> {
             SingUpController controller = new SingUpController();
+            //Testing user creation
+            boolean selectedType = true;
+            //String firstName, String lastName, String address, String phoneNumber, String zipCode,String userName, String password, boolean selectedUser
+            UserCreation.createUser(firstName.getText(),lastName.getText(),address.getText(), phoneNumber.getText(), zipCode.getText(), userName.getText(), passwordField.getText(), selectedType);
+            System.out.println("New Login. Username: " + userName.getText() + " Password: " + passwordField.getText());
 //            controller.createUser();
         });
         // Create stage
@@ -184,3 +191,5 @@ public String getSelectedUser(){
         scene.getStylesheets().add(stylesheetURL.toExternalForm());
     }
 }
+
+
