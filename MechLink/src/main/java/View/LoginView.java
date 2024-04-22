@@ -10,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.*;
 
 public class LoginView {
     private static LoginView instance;
@@ -30,6 +31,12 @@ public class LoginView {
         passwordField = new PasswordField();
 
         loginButton = new Button("Login");
+        //Button Test
+        //loginButton.setOnAction( e -> System.out.println(emailTextField.getText() + passwordField.getText()));
+        loginButton.setOnAction( e -> loginCheck(emailTextField.getText(), passwordField.getText()));
+
+
+//        loginButton.setOnAction( e -> );
 
         // Create layout and add components
         GridPane gridPane = new GridPane();
@@ -92,4 +99,46 @@ public class LoginView {
         }
         scene.getStylesheets().add(stylesheetURL.toExternalForm());
     }
-}
+
+
+            private Connection connect() {
+                // SQLite connection string
+                String url = "jdbc:sqlite:MechlinkData.db";
+                Connection conn = null;
+                try {
+                    conn = DriverManager.getConnection(url);
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+                return conn;
+            }
+
+
+            /**
+             * select all rows in the warehouses table
+             */
+            public void loginCheck(String email_address, String password){
+                //Query to retrieve login info
+                String sql = "SELECT password FROM Logins WHERE email_address = ?";
+
+                try (Connection conn = this.connect();
+                     PreparedStatement pstmt  = conn.prepareStatement(sql)){
+                    //
+                    pstmt.setString(1, email_address);
+                    ResultSet rs    = pstmt.executeQuery();
+
+                    // loop through the result set
+                    while (rs.next()) {
+                        //System.out.println(rs.getString("password"));
+                        //Compares password in DB to entered password
+                        if(rs.getString("password").equals(password)){
+                            System.out.println("Login Successful");
+                        }else{
+                            System.out.println("Incorrect Email/Password Combination");
+                        }
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+    }

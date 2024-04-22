@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -48,7 +49,7 @@ public class MainScreen extends Application {
     }
 
     public static void main(String[] args) {
-        createNewDatabase("MechLink.db");
+        createNewDatabase("MechlinkData.db");
         // Set the controller instance
         launch(args);
     }
