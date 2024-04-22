@@ -117,7 +117,9 @@ private String selectedUser ;
             //Testing user creation
             boolean selectedType = true;
             //String firstName, String lastName, String address, String phoneNumber, String zipCode,String userName, String password, boolean selectedUser
-            UserCreation.createUser(firstName.getText(),lastName.getText(),address.getText(), phoneNumber.getText(), zipCode.getText(), userName.getText(), passwordField.getText(), selectedType);
+            //UserCreation.createUser(firstName.getText(),lastName.getText(),address.getText(), phoneNumber.getText(), zipCode.getText(), userName.getText(), passwordField.getText(), selectedType);
+            //CALLS USER CREATION TO CREATE NEW USER + ENTER INTO DB
+            UserCreation.createUser();
             System.out.println("New Login. Username: " + userName.getText() + " Password: " + passwordField.getText());
 //            controller.createUser();
         });

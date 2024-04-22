@@ -1,4 +1,5 @@
 package Controlls;
+import Model.JobCreation;
 import View.TestClientScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,8 +53,8 @@ public class ClientDashboardController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/job-filled.fxml"));
             AnchorPane jobEntry = loader.load();
-
             JobFilledController controller = loader.getController();
+            JobCreation.createJob(datePosted,location,carModel,jobDescription);
             controller.setNewJobData(fullName, datePosted.toString(), location, carModel, jobDescription);
             jobPostedVBox.getChildren().add(jobEntry);
         } catch (IOException e) {
