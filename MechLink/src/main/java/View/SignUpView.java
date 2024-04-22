@@ -16,9 +16,15 @@ public class SignUpView {
 private String selectedUser ;
     private final Stage stage;
     private final Scene scene;
-    private final TextField firstName, lastName, address, phoneNumber, zipCode, userName;
-    private final TextField emailTextField;
-    private final PasswordField passwordField, passwordConfirmation;
+    private static  TextField firstName;
+    private static  TextField lastName;
+    private final TextField address;
+    private final TextField phoneNumber;
+    private static  TextField zipCode;
+    private static  TextField userName;
+    private static  TextField emailTextField;
+    private static  PasswordField passwordField;
+    private static  PasswordField passwordConfirmation;
     private final Button createBTN;
 
     private SignUpView() {
@@ -137,11 +143,11 @@ private String selectedUser ;
         return scene;
     }
 
-    public TextField getFirstName() {
+    public static TextField getFirstName() {
         return firstName;
     }
 
-    public TextField getLastName() {
+    public static TextField getLastName() {
         return lastName;
     }
 
@@ -153,23 +159,23 @@ private String selectedUser ;
         return phoneNumber;
     }
 
-    public TextField getZipCode() {
+    public static TextField getZipCode() {
         return zipCode;
     }
 
-    public TextField getUserName() {
+    public static TextField getUserName() {
         return userName;
     }
 
-    public TextField getEmailTextField() {
+    public static TextField getEmailTextField() {
         return emailTextField;
     }
 
-    public PasswordField getPasswordField() {
+    public static PasswordField getPasswordField() {
         return passwordField;
     }
 
-    public PasswordField getPasswordConfirmation() {
+    public static PasswordField getPasswordConfirmation() {
         return passwordConfirmation;
     }
 
