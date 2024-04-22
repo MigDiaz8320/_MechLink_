@@ -1,5 +1,6 @@
 package Controlls;
 
+import Model.UserCreation;
 import View.SignUpView;
 
 public class SingUpController {
@@ -21,6 +22,15 @@ public class SingUpController {
         String email = signUpView.getEmailTextField().getText();
         String password = signUpView.getPasswordField().getText();
         String selectedType = signUpView.getSelectedUser();
+boolean isMechanic = selectedType == "Mechanic";
+
+        UserCreation usercreation = new UserCreation();
+
+       usercreation.createUser(userName, password, firstName, lastName, zipCode, isMechanic );
+
+
+
+
         String confirmPassword = signUpView.getPasswordConfirmation().getText();
         System.out.println("create method is called from the SignUpView");
         if (selectedType.equals("Client")) {
