@@ -1,7 +1,6 @@
 package View;
 
 import Controlls.SingUpController;
-import Model.UserCreation;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -9,22 +8,16 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.sql.*;
 
 public class SignUpView {
+
     private static SignUpView instance;
-private String selectedUser ;
+    private String selectedUser;
     private final Stage stage;
     private final Scene scene;
-    private static  TextField firstName;
-    private static  TextField lastName;
-    private final TextField address;
-    private final TextField phoneNumber;
-    private static  TextField zipCode;
-    private static  TextField userName;
-    private static  TextField emailTextField;
-    private static  PasswordField passwordField;
-    private static  PasswordField passwordConfirmation;
+    private final TextField firstName, lastName, address, phoneNumber, zipCode, userName;
+    private final TextField emailTextField;
+    private final PasswordField passwordField, passwordConfirmation;
     private final Button createBTN;
 
     private SignUpView() {
@@ -75,13 +68,24 @@ private String selectedUser ;
         createBTN = new Button("Create");
         createBTN.getStyleClass().add("loginBtn");
 
+        SingUpController controller = new SingUpController();
+
         // ToggleGroup for radio buttons
         ToggleGroup toggleGroup = new ToggleGroup();
         RadioButton mechanicRadioBtn = new RadioButton("Mechanic");
         RadioButton clientRadioBtn = new RadioButton("Client");
-
-       mechanicRadioBtn.setToggleGroup(toggleGroup);
+        mechanicRadioBtn.setToggleGroup(toggleGroup);
         clientRadioBtn.setToggleGroup(toggleGroup);
+
+        toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            RadioButton selectedRadioButton = (RadioButton) newValue;
+            selectedUser = selectedRadioButton.getText();
+        });
+
+        createBTN.setOnAction(event -> {
+            System.out.println("create btn pressed");
+            controller.createUser();
+        });
 
         // Add nodes to the grid
         gridPane.add(firstLabel, 0, 0);
@@ -111,18 +115,7 @@ private String selectedUser ;
         // Create scene
         scene = new Scene(gridPane, 500, 700);
         loadStylesheetIntoScene(scene);
-//add event to the createBTN
-        createBTN.setOnAction(event -> {
-            SingUpController controller = new SingUpController();
-            //Testing user creation
-            boolean selectedType = true;
-            //String firstName, String lastName, String address, String phoneNumber, String zipCode,String userName, String password, boolean selectedUser
-            //UserCreation.createUser(firstName.getText(),lastName.getText(),address.getText(), phoneNumber.getText(), zipCode.getText(), userName.getText(), passwordField.getText(), selectedType);
-            //CALLS USER CREATION TO CREATE NEW USER + ENTER INTO DB
-            UserCreation.createUser();
-            System.out.println("New Login. Username: " + userName.getText() + " Password: " + passwordField.getText());
-//            controller.createUser();
-        });
+
         // Create stage
         stage = new Stage();
         stage.setMaximized(true);
@@ -145,11 +138,11 @@ private String selectedUser ;
         return scene;
     }
 
-    public static TextField getFirstName() {
+    public TextField getFirstName() {
         return firstName;
     }
 
-    public static TextField getLastName() {
+    public TextField getLastName() {
         return lastName;
     }
 
@@ -161,34 +154,33 @@ private String selectedUser ;
         return phoneNumber;
     }
 
-    public static TextField getZipCode() {
+    public TextField getZipCode() {
         return zipCode;
     }
 
-    public static TextField getUserName() {
+    public TextField getUserName() {
         return userName;
     }
 
-    public static TextField getEmailTextField() {
+    public TextField getEmailTextField() {
         return emailTextField;
     }
 
-    public static PasswordField getPasswordField() {
+    public PasswordField getPasswordField() {
         return passwordField;
     }
 
-    public static PasswordField getPasswordConfirmation() {
+    public PasswordField getPasswordConfirmation() {
         return passwordConfirmation;
     }
 
     public Button getCreateBTN() {
         return createBTN;
     }
-public String getSelectedUser(){
+
+    public String getSelectedUser() {
         return selectedUser;
-}
-
-
+    }
 
     private void loadStylesheetIntoScene(Scene scene) {
         URL stylesheetURL = getClass().getResource("/mainStyle.css");
@@ -198,6 +190,13 @@ public String getSelectedUser(){
         }
         scene.getStylesheets().add(stylesheetURL.toExternalForm());
     }
+    public void showError(String errorMessage) {
+        // You can display the error message in a dialog box, label, or any other appropriate way
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(errorMessage);
+        alert.showAndWait();
+    }
+
 }
-
-

@@ -17,11 +17,11 @@ public class MainScrenController {
     private void showSignUpView(){
 //       signUpView.
         SingUpController controller = new SingUpController();
-        controller.showSigUpView();
+        controller.showView();
     }
  public void signUpBtnHandler(){
 SingUpController controller = new SingUpController();
-controller.showSigUpView();
+controller.showView();
      System.out.println(" Message Fromm the Controller : sign up button clicked!");
  }
 public  void loginHandler(){

@@ -1,5 +1,4 @@
 package Controlls;
-import Model.JobCreation;
 import View.TestClientScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +20,6 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ClientDashboardController implements Initializable {
-
     @FXML
     private Button postJobBtn;
 
@@ -49,14 +47,27 @@ public class ClientDashboardController implements Initializable {
             e.printStackTrace();
         }
     }
+
     public void addNewJob(String fullName, LocalDate datePosted, String location, String carModel, String jobDescription) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/job-filled.fxml"));
             AnchorPane jobEntry = loader.load();
+
             JobFilledController controller = loader.getController();
-            JobCreation.createJob(datePosted,location,carModel,jobDescription);
             controller.setNewJobData(fullName, datePosted.toString(), location, carModel, jobDescription);
             jobPostedVBox.getChildren().add(jobEntry);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(TestClientScreen.class.getResource("/View/client-dashboard.fxml"));
+            Scene scene = new Scene(loader.load(), 665, 665);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
